@@ -67,9 +67,16 @@ temp = zeros(m, 10);
 for i = 1:5000
   temp(i, y(i)) = 1;
 end
-y = temp
+y = temp;
 
-
+for i = 1:10
+  a1 = [ones(m, 1) X];
+  z3 = a1*Theta1';
+  a2 = sigmoid(z3);
+  a2 = [ones(size(Theta1, 1),1) a2);
+  z3 = a2*Theta2';
+  h = sigmoid(z3);
+end
 
 
 
