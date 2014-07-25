@@ -62,11 +62,12 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
-
-
-
-
-
+%Part 1
+temp = zeros(m, 10);
+for i = 1:5000
+  temp(i, y(i)) = 1;
+end
+y = temp
 
 
 
