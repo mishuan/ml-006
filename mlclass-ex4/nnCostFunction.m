@@ -63,30 +63,26 @@ Theta2_grad = zeros(size(Theta2));
 %
 
 %Part 1
-temp = zeros(m, 10);
-for i = 1:5000
+temp = zeros(m, size(y, 2));
+
+for i = 1:m
   temp(i, y(i)) = 1;
 end
-y = temp;
 
-for i = 1:10
-  a1 = [ones(m, 1) X];
-  z3 = a1*Theta1';
-  a2 = sigmoid(z3);
-  a2 = [ones(size(Theta1, 1),1) a2);
-  z3 = a2*Theta2';
-  h = sigmoid(z3);
+a1 = [ones(m, 1) X];
+z3 = a1*Theta1';
+a2 = sigmoid(z3);
+a2 = [ones(m, 1) a2];
+z3 = a2*Theta2';
+h = sigmoid(z3);
+
+for i = 1:m
+  h_temp = h(i,:);
+  y_temp = temp(i,:);
+  J = J + (-y_temp*log(h_temp')-(1-y_temp)*log(1-h_temp'));
 end
 
-
-
-
-
-
-
-
-
-
+J = (1/m)*J;
 
 % -------------------------------------------------------------
 
