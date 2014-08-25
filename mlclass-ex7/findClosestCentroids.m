@@ -21,11 +21,15 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+for i = 1:length(X)
+  cost = zeros(K,1);
+  curr = X(i,:);
+  for j = 1:K
+    temp = curr - centroids(j,:);
+    cost(j) = temp*temp';
+  end
+  [y, idx(i)] = min(cost);
+end
 
 % =============================================================
 
